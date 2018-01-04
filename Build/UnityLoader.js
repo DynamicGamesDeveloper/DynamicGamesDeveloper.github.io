@@ -324,7 +324,7 @@ instantiate: function(e, t, r) {
                        osVersion: p,
                        gpu: function() {
                        var e = document.createElement("canvas"),
-                       t = e.getContext("experimental-webgl");
+                       t = e.getContext("experimental-webgl", { alpha: false });
                        if (t) {
                        var r = t.getExtension("WEBGL_debug_renderer_info");
                        if (r) return t.getParameter(r.UNMASKED_RENDERER_WEBGL)
@@ -335,8 +335,8 @@ instantiate: function(e, t, r) {
                        hasWebGL: function() {
                        if (!window.WebGLRenderingContext) return 0;
                        var e = document.createElement("canvas"),
-                       t = e.getContext("webgl2");
-                       return t ? 2 : (t = e.getContext("experimental-webgl2"), t ? 2 : (t = e.getContext("webgl"), t || (t = e.getContext("experimental-webgl")) ? 1 : 0))
+                       t = e.getContext("webgl2", { alpha: false });
+                       return t ? 2 : (t = e.getContext("experimental-webgl2", { alpha: false }), t ? 2 : (t = e.getContext("webgl", { alpha: false }), t || (t = e.getContext("experimental-webgl", { alpha: false })) ? 1 : 0))
                        }(),
                        hasCursorLock: function() {
                        var e = document.createElement("canvas");
